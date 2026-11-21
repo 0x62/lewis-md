@@ -20,7 +20,7 @@ I’m looking for a summer 2027 engineering internship where I can put my softwa
 - **Dynamical:** I designed and built an SMS traffic analytics platform that processes over 100 million SMS records per quarter.
 
 - **[Cogni](https://www.getcogni.com/):** I built Cogni Verify, a proof of concept for instant, decentralised KYC using multiparty computation and encryption.
-- **Goto:** I led five engineers building apps and dispatch tools for licensed taxis and rideshares. Our routing and dispatch changes cut 90th-percentile pickup waits by 30%.
+- **Goto:** I lead the engineering team building apps for licensed taxis and rideshares.
 - **[CoinShares](https://coinshares.com/) & [JTC](https://www.jtcgroup.com/):** I built a platform that handled payouts after the Bitcoin Cash fork, supporting millions of pounds in transfers via SWIFT MT103. I also built tools to validate Bitcoin and Ethereum addresses.
 
 [Download my CV (PDF)](/ben/benedict-lewis-cv.pdf)
