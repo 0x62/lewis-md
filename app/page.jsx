@@ -18,7 +18,22 @@ function heading(Tag, marks) {
   };
 }
 
+function assetUrl(url) {
+  if (!url?.startsWith("/ben/") || process.env.GITHUB_PAGES !== "1") return url;
+  return (process.env.PAGES_BASE_PATH ?? "/lewis-md") + url;
+}
+
 const components = {
+  img({ src, alt, title }) {
+    const portrait = src === "/ben/portrait.jpg";
+    return <img src={assetUrl(src)} alt={alt ?? ""} title={title}
+      className={portrait ? "profile-portrait" : undefined}
+      width={portrait ? 132 : undefined} height={portrait ? 132 : undefined} />;
+  },
+  a({ href, title, children }) {
+    const filename = /^\/ben\/([A-Za-z0-9_-]+\.pdf)$/.exec(href ?? "")?.[1];
+    return <a href={assetUrl(href)} title={title} download={filename}>{children}</a>;
+  },
   h1: heading("h1", "#"),
   h2: heading("h2", "##"),
   h3: heading("h3", "###"),
