@@ -1,31 +1,47 @@
 # lewis.md
 
-One GitHub Flavored Markdown file per person. `profiles/ben.md` renders at `ben.lewis.md`. To add a page, commit `profiles/<subdomain>.md` with a lowercase DNS label (letters, digits and hyphens). Changes go live after the next deployment. Unpublished names return 404; there is no family directory. The apex, `lewis.md`, renders `profiles/_home.md`. Markdown is public when deployed, even if the source repository is private.
+A small home on the web for the Lewis family and anyone else named Lewis. Each page is a Markdown file that gets its own subdomain. For example, [`profiles/ben.md`](profiles/ben.md) is the page for `ben.lewis.md`.
 
-## Local
+The custom domain isn’t connected yet. You can see what a page looks like in [Ben’s GitHub Pages demo](https://0x62.github.io/lewis-md/).
 
-    npm install
-    npm test
-    npm run dev
+## Get your own page
 
-Open http://localhost:3000 for Ben’s page. To verify real host routing:
+If your surname is Lewis, you’re welcome to request a free page. New subdomains are first names only and subject to availability.
 
-    curl -H 'Host: lewis.md' http://localhost:3000/
-    curl -H 'Host: ben.lewis.md' http://localhost:3000/
-    curl -I -H 'Host: missing.lewis.md' http://localhost:3000/
+1. [Check the profiles folder](profiles) to see whether your first name is available.
+2. Fork this repo and add `profiles/yourname.md`, using your first name in lowercase. Write your page in [GitHub Flavored Markdown](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax). Start with a heading and add whatever you’d like to share.
+3. [Open a pull request](https://github.com/0x62/lewis-md/pulls). To update your own page later, open a pull request editing the same file.
 
-## GitHub Pages demo
+Not on GitHub? [Email me](mailto:ben@bl.je) your Markdown file and the first name you’d like to use. Only include things you’re comfortable sharing publicly: the Markdown, pull requests and published pages are all public.
 
-The preview deliberately exports only `profiles/ben.md`. GitHub Pages does not run the Node request handler and cannot serve the wildcard app. Enable Settings → Pages → Source: GitHub Actions on this repository if the GitHub plan supports Pages for private repositories. The workflow discovers the repository's Pages base path and publishes `out/`. Verify the Pages site's access settings separately: a private repository does not automatically make its website private.
+There’s no control panel. An `@lewis.md` email address may be possible at cost; email me to ask. This is a personal project, so there are no guarantees about availability, support or how long it will be around. The domain isn’t for sale.
 
-Build the same static demo locally at the root of a static server:
+## Running the app
 
-    GITHUB_PAGES=1 PAGES_BASE_PATH= npm run build
+Requires Node.js 20.9 or newer.
 
-## Deploy the wildcard app on a Next.js host
+```sh
+npm ci
+npm test
+npm run dev
+```
 
-For production, leave `GITHUB_PAGES` unset. Import the private GitHub repository into a Next.js-capable project (Vercel is one option). The assigned deployment and project URLs default to Ben’s profile for review; configure `PREVIEW_HOSTS` with comma-separated exact hostnames for any separate preview alias when required. The app uses the request's `Host` (not arbitrary forwarded headers), and the runtime files are included in the build trace.
+Open http://localhost:3000 for Ben’s page. To test host-based routing:
 
-After the preview has been reviewed, add both `lewis.md` and `*.lewis.md` under the project’s Domains. Follow the provider’s live DNS and certificate instructions: [Vercel wildcard domain guide](https://vercel.com/docs/domains/working-with-domains/add-a-domain). Vercel's wildcard certificate setup uses its nameservers; when switching DNS providers, copy any existing DNS records (especially mail records) before a change. An ordinary preview is independent of the wildcard setup.
+```sh
+curl -H 'Host: lewis.md' http://localhost:3000/
+curl -H 'Host: ben.lewis.md' http://localhost:3000/
+curl -I -H 'Host: missing.lewis.md' http://localhost:3000/
+```
 
-Raw HTML in content is disabled. The Markdown renderer provides clickable links, headings, lists, tables, task lists, strikethrough, and code blocks with no per-profile JavaScript.
+The Next.js app serves `profiles/_home.md` for the apex and `profiles/<name>.md` for a matching subdomain. Unknown names return 404. Raw HTML in Markdown is disabled.
+
+## Deployment
+
+The GitHub Actions workflow exports only Ben’s profile to GitHub Pages. It’s a static demo, not the wildcard app. To build the demo locally for a static server at the root:
+
+```sh
+GITHUB_PAGES=1 PAGES_BASE_PATH= npm run build
+```
+
+For the wildcard app, deploy to a Next.js host with `GITHUB_PAGES` unset and configure both `lewis.md` and `*.lewis.md`. Follow your host’s DNS and TLS instructions. Set `PREVIEW_HOSTS` to comma-separated exact hostnames if custom staging addresses should serve Ben’s profile.
