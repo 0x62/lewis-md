@@ -19,7 +19,7 @@ I’m looking for a summer 2027 engineering internship where I can put my softwa
 - **NFT-Inator:** I built a no-code tool for designing and launching NFT collections. Creators using it earned $12 million.
 - **Dynamical:** I designed and built an SMS traffic analytics platform that processes over 100 million SMS records per quarter.
 
-- **Cogni:** I built Cogni Verify, a proof of concept for one-click identity checks that used multiparty computation and encryption to limit exposure of personal data.
+- **Cogni:** I built Cogni Verify, a proof of concept for instant, decentralised KYC using multiparty computation and encryption.
 - **Goto:** I led five engineers building apps and dispatch tools for licensed taxis and rideshares. Our routing and dispatch changes cut 90th-percentile pickup waits by 30%.
 - **CoinShares & JTC:** I built a platform that handled payouts after the Bitcoin Cash fork, supporting millions of pounds in transfers via SWIFT MT103. I also built tools to validate Bitcoin and Ethereum addresses.
 
