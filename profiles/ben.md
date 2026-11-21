@@ -10,6 +10,10 @@ Software engineer and first-year Aerospace Electronic Engineering student at the
 - **[ESPRemote](https://bl.je/project/espremote)**: a handheld Home Assistant controller with an OLED, rotary encoder and haptic feedback.
 - **[JSBSim-WASM](https://github.com/0x62/jsbsim-wasm)**: a TypeScript SDK and toolchain for running JSBSim flight simulations in the browser. [Used by](https://0sfs.github.io/) 0SFS.
 
+## Now
+
+I’m looking for a summer 2027 engineering internship where I can put my software experience to work on electronics and physical systems. I’m also open to consulting and freelance work.
+
 ## CV
 
 - **NFT-Inator:** I built a no-code tool for designing and launching NFT collections. Creators using it earned $12 million.
@@ -20,10 +24,6 @@ Software engineer and first-year Aerospace Electronic Engineering student at the
 - **CoinShares & JTC:** I built a platform that handled payouts after the Bitcoin Cash fork, supporting millions of pounds in transfers via SWIFT MT103. I also built tools to validate Bitcoin and Ethereum addresses.
 
 [Download my CV (PDF)](/ben/benedict-lewis-cv.pdf)
-
-## Now
-
-I’m looking for a summer 2027 engineering internship where I can put my software experience to work on electronics and physical systems. I’m also open to consulting and freelance work.
 
 ## Links
 
