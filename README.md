@@ -45,3 +45,29 @@ GITHUB_PAGES=1 PAGES_BASE_PATH= npm run build
 ```
 
 For the wildcard app, deploy to a Next.js host with `GITHUB_PAGES` unset and configure both `lewis.md` and `*.lewis.md`. Follow your host’s DNS and TLS instructions. Set `PREVIEW_HOSTS` to comma-separated exact hostnames if custom staging addresses should serve Ben’s profile.
+
+## Cloudflare Workers
+
+The Worker and Pages demo are separate outputs. Leave `GITHUB_PAGES` unset for
+the Worker. The Node build bundles approved profile filenames into the server
+build; the Worker does not read the local filesystem at request time.
+
+    npm ci
+    npm run build:worker
+    npm run preview:worker
+
+Once the preview is running, use its reported local port:
+
+    curl -H 'Host: ben.lewis.md' http://localhost:8787/
+    curl -I -H 'Host: missing.lewis.md' http://localhost:8787/
+
+`npm run deploy:worker` deploys the already built Worker to the authenticated
+Cloudflare account. DNS and production routes are intentionally not enabled
+by the checked-in configuration. To make a `workers.dev` URL show Ben's page,
+set `PREVIEW_HOSTS` to that exact hostname in the Worker variables.
+
+See [Cloudflare's Workers Routes documentation](https://developers.cloudflare.com/workers/configuration/routing/routes/)
+for the wildcard cutover. It requires an active Cloudflare zone, a proxied
+DNS record covering the hostnames, and a Worker route such as
+`*.lewis.md/*`. The apex `lewis.md/*` is a separate route. Confirm DNS,
+certificates and mail records before making changes.
