@@ -4,9 +4,14 @@
 
 Software engineer and first-year Aerospace Electronic Engineering student at the University of Southampton. Before university, I spent over a decade building software, including work as a founder and consultant. Now I’m learning the hardware side and building things that bring the two together.
 
+- [Full portfolio](https://bl.je)
+- [GitHub](https://github.com/0x62)
+- [LinkedIn](https://linkedin.com/in/benlewisjsy)
+- [Email](mailto:ben@bl.je)
+
 ## Projects
 
-- **DrinkIQ**: a smart drinks coaster that tracks hydration and reminds you to drink.
+- **[DrinkIQ](https://bl.je/project/drinkiq)**: a smart drinks coaster that tracks hydration and reminds you to drink.
 - **[ESPRemote](https://bl.je/project/espremote)**: a handheld Home Assistant controller with an OLED, rotary encoder and haptic feedback.
 - **[JSBSim-WASM](https://github.com/0x62/jsbsim-wasm)**: a TypeScript SDK and toolchain for running JSBSim flight simulations in the browser. [Used by](https://0sfs.github.io/) 0SFS.
 
@@ -24,10 +29,3 @@ I’m looking for a summer 2027 engineering internship where I can put my softwa
 - **[CoinShares](https://coinshares.com/) & [JTC](https://www.jtcgroup.com/):** I built a platform that handled payouts after the Bitcoin Cash fork, supporting millions of pounds in transfers via SWIFT MT103. I also built tools to validate Bitcoin and Ethereum addresses.
 
 [Download my CV (PDF)](/ben/benedict-lewis-cv.pdf)
-
-## Links
-
-- [Full portfolio](https://bl.je)
-- [GitHub](https://github.com/0x62)
-- [LinkedIn](https://linkedin.com/in/benlewisjsy)
-- [Email](mailto:ben@bl.je)
