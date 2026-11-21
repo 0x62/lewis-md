@@ -2,12 +2,17 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { profileForHost } from "../lib/hosts.mjs";
 
+test("maps only the apex to the reserved homepage", () => {
+  assert.equal(profileForHost("LEWIS.MD:443"), "_home");
+  assert.equal(profileForHost("lewis.md."), "_home");
+  assert.equal(profileForHost("_home.lewis.md"), null);
+});
 test("maps one valid production label", () => {
   assert.equal(profileForHost("BEN.LEWIS.MD:443"), "ben");
   assert.equal(profileForHost("alex-j.lewis.md."), "alex-j");
 });
 test("does not turn production misses or unrelated hosts into previews", () => {
-  for (const host of ["lewis.md", "ben.lewis.md.example.org", "nested.ben.lewis.md", "other.vercel.app"]) {
+  for (const host of ["ben.lewis.md.example.org", "nested.ben.lewis.md", "other.vercel.app"]) {
     assert.equal(profileForHost(host, ["preview.vercel.app"]), null);
   }
   assert.equal(profileForHost("unknown.lewis.md", ["unknown.lewis.md"]), "unknown");

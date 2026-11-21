@@ -53,7 +53,7 @@ export default async function Page() {
 
   return (
     <main className="page">
-      <div className="filename" aria-hidden="true">{profile.slug}.md</div>
+      <div className="filename" aria-hidden="true">{profile.slug === "_home" ? "lewis.md" : profile.slug + ".md"}</div>
       <article className="markdown">
         <Markdown remarkPlugins={[remarkGfm]} components={components} skipHtml>
           {profile.markdown}
