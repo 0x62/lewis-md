@@ -12,9 +12,8 @@ Software engineer and first-year Aerospace Electronic Engineering student at the
 
 ## CV
 
-- **Education:** Aerospace Electronic Engineering BEng, University of Southampton. Expected graduation: 2029.
-- **Software:** At Dynamical, I built an SMS analytics platform that processed over 100 million records per quarter. At ProcessLabs, I led engineering and built tooling used across more than 30,000 projects.
-- **Engineering:** Embedded firmware, custom PCB design and assembly, instrumentation, and simulation tooling.
+- **NFT-Inator:** I built a no-code tool for designing and launching NFT collections. Creators using it earned $12 million.
+- **Dynamical:** I designed and built an SMS traffic analytics platform that processes over 100 million SMS records per quarter.
 
 [Download my CV (PDF)](/ben/benedict-lewis-cv.pdf)
 
