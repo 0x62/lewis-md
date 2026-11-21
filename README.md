@@ -1,8 +1,6 @@
 # lewis.md
 
-A small home on the web for the Lewis family and anyone else named Lewis. Each page is a Markdown file that gets its own subdomain. For example, [`profiles/ben.md`](profiles/ben.md) is the page for `ben.lewis.md`.
-
-The custom domain isn’t connected yet. You can see what a page looks like in [Ben’s GitHub Pages demo](https://0x62.github.io/lewis-md/).
+[lewis.md](https://lewis.md) is a small home on the web for the Lewis family and anyone else named Lewis. Each page is a Markdown file that gets its own subdomain. For example, [`profiles/ben.md`](profiles/ben.md) is the page for `ben.lewis.md`.
 
 ## Get your own page
 
@@ -38,36 +36,15 @@ The Next.js app serves `profiles/_home.md` for the apex and `profiles/<name>.md`
 
 ## Deployment
 
-The GitHub Actions workflow exports only Ben’s profile to GitHub Pages. It’s a static demo, not the wildcard app. To build the demo locally for a static server at the root:
+For a local production preview or to deploy to Cloudflare:
 
 ```sh
-GITHUB_PAGES=1 PAGES_BASE_PATH= npm run build
+npm run build
+npm run preview
+# To deploy the built app:
+npm run deploy
 ```
 
-For the wildcard app, deploy to a Next.js host with `GITHUB_PAGES` unset and configure both `lewis.md` and `*.lewis.md`. Follow your host’s DNS and TLS instructions. Set `PREVIEW_HOSTS` to comma-separated exact hostnames if custom staging addresses should serve Ben’s profile.
+In Cloudflare’s Git build settings, use `npm run build` as the build command and `npm run deploy` as the deploy command.
 
-## Cloudflare Workers
-
-The Worker and Pages demo are separate outputs. Leave `GITHUB_PAGES` unset for
-the Worker. The Node build bundles approved profile filenames into the server
-build; the Worker does not read the local filesystem at request time.
-
-    npm ci
-    npm run build:worker
-    npm run preview:worker
-
-Once the preview is running, use its reported local port:
-
-    curl -H 'Host: ben.lewis.md' http://localhost:8787/
-    curl -I -H 'Host: missing.lewis.md' http://localhost:8787/
-
-`npm run deploy:worker` deploys the already built Worker to the authenticated
-Cloudflare account. DNS and production routes are intentionally not enabled
-by the checked-in configuration. To make a `workers.dev` URL show Ben's page,
-set `PREVIEW_HOSTS` to that exact hostname in the Worker variables.
-
-See [Cloudflare's Workers Routes documentation](https://developers.cloudflare.com/workers/configuration/routing/routes/)
-for the wildcard cutover. It requires an active Cloudflare zone, a proxied
-DNS record covering the hostnames, and a Worker route such as
-`*.lewis.md/*`. The apex `lewis.md/*` is a separate route. Confirm DNS,
-certificates and mail records before making changes.
+The app routes requests by hostname. Configure both the apex `lewis.md` and the wildcard `*.lewis.md` in Cloudflare. The [Cloudflare routing guide](https://developers.cloudflare.com/workers/configuration/routing/routes/) explains how proxied DNS and routes work.

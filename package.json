@@ -4,14 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "opennextjs-cloudflare build",
     "start": "next start",
     "test": "node --test",
     "predev": "node scripts/bundle-profiles.mjs",
     "prebuild": "node scripts/bundle-profiles.mjs",
-    "build:worker": "opennextjs-cloudflare build",
-    "preview:worker": "opennextjs-cloudflare preview",
-    "deploy:worker": "opennextjs-cloudflare deploy"
+    "preview": "opennextjs-cloudflare preview",
+    "deploy": "opennextjs-cloudflare deploy"
   },
   "engines": {
     "node": ">=20.9.0"

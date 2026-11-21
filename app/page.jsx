@@ -3,14 +3,11 @@ import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { readProfile, readProfileSlug } from "../lib/profile.mjs";
+import { readProfile } from "../lib/profile.mjs";
 
 export const runtime = "nodejs";
 
-const currentProfile = cache(async () => {
-  if (process.env.GITHUB_PAGES === "1") return readProfileSlug("ben");
-  return readProfile((await headers()).get("host"));
-});
+const currentProfile = cache(async () => readProfile((await headers()).get("host")));
 
 function heading(Tag, marks) {
   return function MarkdownHeading({ children }) {
@@ -18,21 +15,16 @@ function heading(Tag, marks) {
   };
 }
 
-function assetUrl(url) {
-  if (!url?.startsWith("/ben/") || process.env.GITHUB_PAGES !== "1") return url;
-  return (process.env.PAGES_BASE_PATH ?? "/lewis-md") + url;
-}
-
 const components = {
   img({ src, alt, title }) {
     const portrait = src === "/ben/portrait.jpg";
-    return <img src={assetUrl(src)} alt={alt ?? ""} title={title}
+    return <img src={src} alt={alt ?? ""} title={title}
       className={portrait ? "profile-portrait" : undefined}
       width={portrait ? 132 : undefined} height={portrait ? 132 : undefined} />;
   },
   a({ href, title, children }) {
     const filename = /^\/ben\/([A-Za-z0-9_-]+\.pdf)$/.exec(href ?? "")?.[1];
-    return <a href={assetUrl(href)} title={title} download={filename}>{children}</a>;
+    return <a href={href} title={title} download={filename}>{children}</a>;
   },
   h1: heading("h1", "#"),
   h2: heading("h2", "##"),
